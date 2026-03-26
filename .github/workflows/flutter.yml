@@ -60,7 +60,7 @@ jobs:
         uses: w9jds/firebase-action@v2.2.0
         with:
           args: appdistribution:distribute build/app/outputs/flutter-apk/app-release.apk \
-                --app YOUR_FIREBASE_ANDROID_APP_ID \
+                --app 1:500172344760:android:8db775938aa2870c06934d \
                 --groups "testers" \
                 --release-notes "Automated build from GitHub Actions"
         env:

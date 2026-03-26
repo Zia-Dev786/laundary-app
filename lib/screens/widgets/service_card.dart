@@ -6,7 +6,7 @@ class ServiceCard extends StatelessWidget {
   final IconData icon;
   final VoidCallback onTap;
 
-  const ServiceCard({required this.title, required this.icon, required this.onTap});
+  const ServiceCard({super.key, required this.title, required this.icon, required this.onTap});
 
   @override
   Widget build(BuildContext context) {

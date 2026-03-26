@@ -8,6 +8,8 @@ class AdminServiceScreen extends StatelessWidget {
   final _descriptionController = TextEditingController();
   final _firestore = FirebaseFirestore.instance;
 
+  AdminServiceScreen({super.key});
+
   void addService() {
     _firestore.collection('services').add({
       'name': _serviceNameController.text,

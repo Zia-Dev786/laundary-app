@@ -26,6 +26,7 @@ class HomeScreen extends StatelessWidget {
           IconButton(
             onPressed: () {
               AuthService().logout().then((_) {
+                // ignore: use_build_context_synchronously
                 Navigator.pushReplacementNamed(context, Routes.login);
               });
             },

@@ -25,9 +25,9 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
-      # # 4️⃣ Analyze project source
-      # - name: Run Flutter analyze
-      #   run: flutter analyze
+      # 4️⃣ Analyze project source
+      - name: Run Flutter analyze
+        run: flutter analyze
 
       # # 5️⃣ Run tests
       # - name: Run tests
@@ -47,3 +47,22 @@ jobs:
         with:
           name: app-release
           path: build/app/outputs/flutter-apk/app-release.apk
+    
+
+
+      # Set up Firebase token from service account JSON
+      - name: Setup Firebase CLI
+        uses: w9jds/firebase-action@v2.2.0
+        with:
+          args: "login:ci --token ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}"
+
+      # Upload to Firebase App Distribution
+      - name: Upload APK to Firebase
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+        run: |
+          firebase appdistribution:distribute \
+            build/app/outputs/flutter-apk/app-release.apk \
+            --app YOUR_FIREBASE_ANDROID_APP_ID \
+            --groups "testers" \
+            --release-notes "Automated build from GitHub Actions"

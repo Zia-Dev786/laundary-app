@@ -9,6 +9,8 @@ Future<void> main() async {
   runApp( LaundryApp());
 }
 class LaundryApp extends StatelessWidget {
+  const LaundryApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

@@ -5,7 +5,7 @@ class CustomTextField extends StatelessWidget {
   final TextEditingController controller;
   final bool obscure;
 
-  const CustomTextField({
+  const CustomTextField({super.key, 
     required this.hint,
     required this.controller,
     this.obscure = false,

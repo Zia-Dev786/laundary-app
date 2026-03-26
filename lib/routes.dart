@@ -19,6 +19,7 @@ class Routes {
  static const adminDashboard = '/admin/dashboard';
 static const adminOrders = '/admin/orders';
 static const adminUsers = '/admin/users';
+// ignore: constant_identifier_names
 static const AdminService = '/admin/AdminServiceScreen';
 
 static Map<String, WidgetBuilder> getRoutes() {

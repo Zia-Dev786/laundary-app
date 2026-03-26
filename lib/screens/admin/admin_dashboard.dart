@@ -31,6 +31,7 @@ class AdminDashboard extends StatelessWidget {
         }, icon: Icon(Icons.add)),
         IconButton(onPressed: (){
           AuthService().logout().then((e)=>{
+          // ignore: use_build_context_synchronously
           Navigator.pushNamed(context, Routes.login)
           });
           

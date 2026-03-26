@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:ecomapp/models/service_model.dart';
 import 'package:ecomapp/models/order_service.dart';
 import 'package:ecomapp/models/service_services.dart';
 import '../../widgets/custom_button.dart';
@@ -19,7 +18,7 @@ class _PlaceOrderScreenState extends State<PlaceOrderScreen> {
   String? selectedServiceId;
   Map<String, dynamic>? selectedService;
 
-  List<Map<String, dynamic>> _items = [];
+  final List<Map<String, dynamic>> _items = [];
   DateTime? pickupDate;
   DateTime? dropDate;
 
@@ -46,9 +45,9 @@ class _PlaceOrderScreenState extends State<PlaceOrderScreen> {
 
   /// Add a new item
   void addItem() {
-    final _nameController = TextEditingController();
-    final _kgController = TextEditingController();
-    final _priceController = TextEditingController(
+    final nameController = TextEditingController();
+    final kgController = TextEditingController();
+    final priceController = TextEditingController(
         text: selectedService != null ? selectedService!['pricePerKg'].toString() : '');
 
     showDialog(
@@ -58,21 +57,21 @@ class _PlaceOrderScreenState extends State<PlaceOrderScreen> {
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            TextField(controller: _nameController, decoration: const InputDecoration(labelText: "Item Name")),
-            TextField(controller: _kgController, keyboardType: TextInputType.number, decoration: const InputDecoration(labelText: "Quantity (kg)")),
-            TextField(controller: _priceController, keyboardType: TextInputType.number, decoration: const InputDecoration(labelText: "Price per kg")),
+            TextField(controller: nameController, decoration: const InputDecoration(labelText: "Item Name")),
+            TextField(controller: kgController, keyboardType: TextInputType.number, decoration: const InputDecoration(labelText: "Quantity (kg)")),
+            TextField(controller: priceController, keyboardType: TextInputType.number, decoration: const InputDecoration(labelText: "Price per kg")),
           ],
         ),
         actions: [
           TextButton(
             onPressed: () {
-              if (_nameController.text.isEmpty || _kgController.text.isEmpty || _priceController.text.isEmpty) return;
+              if (nameController.text.isEmpty || kgController.text.isEmpty || priceController.text.isEmpty) return;
 
               setState(() {
-                final kg = double.tryParse(_kgController.text) ?? 0;
-                final price = double.tryParse(_priceController.text) ?? 0;
+                final kg = double.tryParse(kgController.text) ?? 0;
+                final price = double.tryParse(priceController.text) ?? 0;
                 _items.add({
-                  'name': _nameController.text,
+                  'name': nameController.text,
                   'quantityKg': kg,
                   'pricePerKg': price,
                   'total': kg * price,
@@ -99,8 +98,11 @@ class _PlaceOrderScreenState extends State<PlaceOrderScreen> {
 
     if (date != null) {
       setState(() {
-        if (isPickup) pickupDate = date;
-        else dropDate = date;
+        if (isPickup) {
+          pickupDate = date;
+        } else {
+          dropDate = date;
+        }
       });
     }
   }

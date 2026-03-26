@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import '../models/service_model.dart';
 
 class ServiceService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;

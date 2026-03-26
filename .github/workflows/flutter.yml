@@ -43,7 +43,7 @@ jobs:
 
       # 7️⃣ Upload artifact (APK) for later use
       - name: Upload APK artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: app-release
           path: build/app/outputs/flutter-apk/app-release.apk

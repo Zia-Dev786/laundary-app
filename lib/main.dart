@@ -19,7 +19,7 @@ class LaundryApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: Routes.login,
+      initialRoute: Routes.onBoarding,
       routes: Routes.getRoutes(),
     );
   }

@@ -1,3 +1,4 @@
+import 'package:ecomapp/screens/onboarding/onboarding.dart';
 import 'package:flutter/material.dart';
 import 'package:ecomapp/screens/admin/admin_dashboard.dart';
 import 'package:ecomapp/screens/admin/admin_services.dart';
@@ -15,6 +16,7 @@ class Routes {
   static const home = '/home';
   static const order = '/order';
   static const history = '/history';
+  static const onBoarding = '/OnBoarding';
 
  static const adminDashboard = '/admin/dashboard';
 static const adminOrders = '/admin/orders';
@@ -33,6 +35,7 @@ static Map<String, WidgetBuilder> getRoutes() {
     adminOrders: (_) => AdminOrdersScreen(),
     adminUsers: (_) => AdminUsersScreen(),
     AdminService: (_) => AdminServiceScreen(),
+    onBoarding: (_) => OnBoardingPage(),
   };
 }
 }

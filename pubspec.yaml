@@ -41,6 +41,7 @@ dependencies:
   fluttertoast: 
   image_picker: ^1.1.0
   intl: ^0.20.2
+  introduction_screen: ^4.0.0
 
 dev_dependencies:
   flutter_test:
